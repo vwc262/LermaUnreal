@@ -36,7 +36,7 @@ public:
 	UPROPERTY(BlueprintReadWrite) float Normal = 0;
 	UPROPERTY(BlueprintReadWrite) float Preventivo = 0;
 	UPROPERTY(BlueprintReadWrite) float Critico = 0;
-	UPROPERTY(BlueprintReadWrite) float Altura = 0;
+	UPROPERTY(BlueprintReadWrite) float Altura = 0; //No llega la altura
 };
 
 USTRUCT(BlueprintType)
@@ -44,9 +44,10 @@ struct FSignalBase
 {
 	GENERATED_USTRUCT_BODY()
 public:
+	// Falta la fecha
 	UPROPERTY(BlueprintReadWrite) int IdSignal = 0;
 	UPROPERTY(BlueprintReadWrite) float Valor = 0;
-	UPROPERTY(BlueprintReadWrite) bool DentroRango = false;
+	UPROPERTY(BlueprintReadWrite) int DentroRango = 0; //Llega como entero
 	UPROPERTY(BlueprintReadWrite) int IndiceImagen = 0;
 };
 
@@ -56,10 +57,10 @@ struct FSignalDescription : public FSignalBase
 	GENERATED_USTRUCT_BODY()
 public:
 	UPROPERTY(BlueprintReadWrite) TipoSignal IdTipoSignal;
-	UPROPERTY(BlueprintReadWrite) FString Nombre;
-	UPROPERTY(BlueprintReadWrite) int Ordinal = 0;
+	UPROPERTY(BlueprintReadWrite, meta = (DisplayName="Nombre")) FString NombreSignal; //NombreSignal
+	UPROPERTY(BlueprintReadWrite, meta = (DisplayName = "Ordinal")) int OrdinalSignal = 0; //OrdinalSignal
 	UPROPERTY(BlueprintReadWrite) FSemaforo Semaforo;
-	UPROPERTY(BlueprintReadWrite) int Linea = 0;
+	UPROPERTY(BlueprintReadWrite) int Linea = 0; //No viene
 };
 
 USTRUCT(BlueprintType)
@@ -82,10 +83,11 @@ USTRUCT(BlueprintType)
 struct FSiteBase {
 	GENERATED_USTRUCT_BODY()
 public:
-	UPROPERTY(BlueprintReadWrite) int Id = 0;
-	UPROPERTY(BlueprintReadWrite) int Enlace = 0;
-	UPROPERTY(BlueprintReadWrite) FDateTime Tiempo;
-	UPROPERTY(BlueprintReadWrite) bool FallaAC = false;
+	// Falta voltaje y IdWeb
+	UPROPERTY(BlueprintReadWrite, meta = (DisplayName = "Id")) int IdSitio = 0; //IdSitio
+	UPROPERTY(BlueprintReadWrite) bool Enlace = 0; //Llega Boleano
+	UPROPERTY(BlueprintReadWrite, meta = (DisplayName = "Tiempo")) FDateTime Fecha; //Fecha
+	UPROPERTY(BlueprintReadWrite) bool FallaAC = false; //No viene del servicio
 	UPROPERTY(BlueprintReadWrite) TArray<FSignalsContainer> SignalsContainer;
 };
 
@@ -98,8 +100,8 @@ public:
 	UPROPERTY(BlueprintReadWrite) FString Abreviacion;
 	UPROPERTY(BlueprintReadWrite) float Latitud = 0;
 	UPROPERTY(BlueprintReadWrite) float Longitud = 0;
-	UPROPERTY(BlueprintReadWrite) int Grupo = 0;
-	UPROPERTY(BlueprintReadWrite) int TipoEstacion = 0;
+	UPROPERTY(BlueprintReadWrite, meta = (DisplayName = "Grupo")) int Estructura = 0; //Estructura
+	UPROPERTY(BlueprintReadWrite, meta = (DisplayName = "TipoEstacion")) int TipoLumbrera = 0; //TipoLumbrera
 	UPROPERTY(BlueprintReadWrite) FString NombreCompleto;
 	UPROPERTY(BlueprintReadWrite) FString NombreCorto;
 	UPROPERTY(BlueprintReadWrite) TArray <FSignalsDescriptionContainer> SignalsDescriptionContainer;
@@ -125,7 +127,6 @@ struct FCommandVWC
 {
 	GENERATED_USTRUCT_BODY()
 public:
-
 	UPROPERTY(BlueprintReadWrite)int IdEstacion;
 	UPROPERTY(BlueprintReadWrite)int Codigo;
 	UPROPERTY(BlueprintReadWrite)FString Usuario;
@@ -137,7 +138,6 @@ struct FCommandResponse
 {
 	GENERATED_USTRUCT_BODY()
 public:
-
 	UPROPERTY(BlueprintReadWrite)bool ResponseBln;
 	UPROPERTY(BlueprintReadWrite)FString ResponseText;
 };
