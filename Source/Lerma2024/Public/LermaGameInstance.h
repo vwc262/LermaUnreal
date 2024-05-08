@@ -9,22 +9,22 @@
 
 UENUM(BlueprintType)
 enum class TipoSignal : uint8 {
-	DEFAULT = 0,
-	NIVEL = 1,
-	PRESION = 2,
-	GASTO = 3,
-	TOTALIZADO = 4,
-	VALVULAANALOGICA = 5,
-	VALVULADISCRETA = 6,
-	BOMBA = 7,
-	PERILLABOMBA = 8,
-	PERILLAGENERAL = 9,
-	VOLTAJE = 10,
-	ENLACE = 11,
-	FALLAC = 12,
-	TIEMPO = 13,
-	MANTENIMIENTO = 14,
-	PUERTAABIERTA = 15
+	Nada = 0,
+	Nivel = 1,
+	Presion = 2,
+	Gasto = 3,
+	Totalizado = 5 , // asi se requirio con boy
+	Enlace = 6, // 1 en linea, else fuera de linea
+	Compuerta = 7,
+	Tiempo = 8,
+	Bomba = 9, // 0 No disponible, 1 encendida, 2 apagada, 3 con falla
+	Bateria = 10,
+	PerillaBomba = 11, // 0 Fuera (OFF), 1 Remoto (REM), 2 Local (LOC), else No disponible
+	ModoOperacion = 12, // 0 Apagado (OFF), 1 Remoto (REM), 2 Auto (AUTO), else No disponible
+	PerillaBombaControl = 13, // 0 Fuera (OFF), 1 Auto (Aut), 2 Manual (Man), else No disponible
+	Valvula = 14, // 1 cerrado, 2 abierta, else No disponible
+	ModoControl = 15, // ON when >=16; 0 y 16=Apagado (OFF), 1 y 17 = UTR, 2 y 18 = Variador, else = No disponible
+	Automatismo = 16 // 0 Apagado, 1 Remoto, 2 Automático, 3 Variador
 };
 
 
