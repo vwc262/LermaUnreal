@@ -44,11 +44,13 @@ struct FSignalBase
 {
 	GENERATED_USTRUCT_BODY()
 public:
-	// Falta la fecha
+	// Se agrego la fecha y Valido
 	UPROPERTY(BlueprintReadWrite) int IdSignal = 0;
 	UPROPERTY(BlueprintReadWrite) float Valor = 0;
 	UPROPERTY(BlueprintReadWrite) int DentroRango = 0; //Llega como entero
+	UPROPERTY(BlueprintReadWrite) FDateTime Fecha = 0; 
 	UPROPERTY(BlueprintReadWrite) int IndiceImagen = 0;
+	UPROPERTY(BlueprintReadWrite) bool Valido = 0;
 };
 
 USTRUCT(BlueprintType)
